@@ -1,18 +1,24 @@
-function printViableArrays() {
-  for (let nineteen = 2; nineteen < 20; nineteen++) {
+/* jslint devel: true */
 
-    for (let eighteen = 2; eighteen < 20; eighteen++) {
+function printViableArrays() {
+  let nineteen;
+  for (nineteen = 2; nineteen < 20; nineteen += 1) {
+
+    let eighteen;
+    for (eighteen = 2; eighteen < 20; eighteen += 1) {
       if (nineteen === eighteen || 21 - nineteen === eighteen) {
         continue;
       }
 
-      for (let seventeen = 2; seventeen < 20; seventeen++) {
+      let seventeen;
+      for (seventeen = 2; seventeen < 20; seventeen += 1) {
         if (nineteen === seventeen || 21 - nineteen === seventeen ||
           eighteen === seventeen || 21 - eighteen === seventeen) {
           continue;
         }
 
-        for (let sixteen = 2; sixteen < 20; sixteen++) {
+        let sixteen;
+        for (sixteen = 2; sixteen < 20; sixteen += 1) {
           if (nineteen === sixteen || 21 - nineteen === sixteen ||
             eighteen === sixteen || 21 - eighteen === sixteen ||
             seventeen === sixteen || 21 - seventeen === sixteen) {
@@ -24,12 +30,14 @@ function printViableArrays() {
             continue;
           }
 
-          let sum_vertex_L = 21 - nineteen + 21 - eighteen + 21 - seventeen + 21 - sixteen + 1;
+          let sum_vertex_L = 21 - nineteen + 21 - eighteen + 21 - seventeen +
+              21- sixteen + 1;
           if (sum_vertex_L < 52 || 53 < sum_vertex_L) {
             continue;
           }
 
-          for (let fifteen = 2; fifteen < 20; fifteen++) {
+          let fifteen;
+          for (fifteen = 2; fifteen < 20; fifteen += 1) {
             if (nineteen === fifteen || 21 - nineteen === fifteen ||
               eighteen === fifteen || 21 - eighteen === fifteen ||
               seventeen === fifteen || 21 - seventeen === fifteen ||
@@ -37,7 +45,8 @@ function printViableArrays() {
               continue;
             }
 
-            for (let fourteen = 2; fourteen < 20; fourteen++) {
+            let fourteen;
+            for (fourteen = 2; fourteen < 20; fourteen += 1) {
               if (nineteen === fourteen || 21 - nineteen === fourteen ||
                 eighteen === fourteen || 21 - eighteen === fourteen ||
                 seventeen === fourteen || 21 - seventeen === fourteen ||
@@ -46,7 +55,8 @@ function printViableArrays() {
                 continue;
               }
 
-              for (let thirteen = 2; thirteen < 20; thirteen++) {
+              let thirteen;
+              for (thirteen = 2; thirteen < 20; thirteen += 1) {
                 if (nineteen === thirteen || 21 - nineteen === thirteen ||
                   eighteen === thirteen || 21 - eighteen === thirteen ||
                   seventeen === thirteen || 21 - seventeen === thirteen ||
@@ -61,12 +71,14 @@ function printViableArrays() {
                   continue;
                 }
 
-                let sum_vertex_J = 21 - sixteen + 21 - fifteen + 21 - fourteen + 21 - thirteen + 1;
+                let sum_vertex_J = 21 - sixteen + 21 - fifteen + 21 - fourteen
+                + 21 - thirteen + 1;
                 if (sum_vertex_J < 52 || 53 < sum_vertex_J) {
                   continue;
                 }
 
-                for (let twelve = 2; twelve < 20; twelve++) {
+                let twelve;
+                for (twelve = 2; twelve < 20; twelve += 1) {
                   if (nineteen === twelve || 21 - nineteen === twelve ||
                     eighteen === twelve || 21 - eighteen === twelve ||
                     seventeen === twelve || 21 - seventeen === twelve ||
@@ -77,17 +89,20 @@ function printViableArrays() {
                     continue;
                   }
 
-                  let sum_vertex_E = eighteen + seventeen + 21 - fourteen + 21 - thirteen + 21 - twelve;
+                  let sum_vertex_E = eighteen + seventeen + 21 - fourteen +
+                      21 - thirteen + 21 - twelve;
                   if (sum_vertex_E < 52 || 53 < sum_vertex_E) {
                     continue;
                   }
 
-                  let sum_vertex_H = fourteen + thirteen + twelve + 21 - seventeen + 21 - eighteen;
+                  let sum_vertex_H = fourteen + thirteen + twelve +
+                      21 - seventeen + 21 - eighteen;
                   if (sum_vertex_H < 52 || 53 < sum_vertex_H) {
                     continue;
                   }
 
-                  for (let eleven = 2; eleven < 20; eleven++) {
+                  let eleven;
+                  for (eleven = 2; eleven < 20; eleven += 1) {
                     if (nineteen === eleven || 21 - nineteen === eleven ||
                       eighteen === eleven || 21 - eighteen === eleven ||
                       seventeen === eleven || 21 - seventeen === eleven ||
@@ -99,39 +114,48 @@ function printViableArrays() {
                       continue;
                     }
 
-                    let sum_vertex_C = 20 + thirteen + twelve + eleven + nineteen;
+                    let sum_vertex_C = 20 + thirteen + twelve + eleven +
+                        nineteen;
                     if (sum_vertex_C < 52 || 53 < sum_vertex_C) {
                       continue;
                     }
 
-                    let sum_vertex_D = nineteen + eighteen + eleven + 21 - fifteen + 21 - fourteen;
+                    let sum_vertex_D = nineteen + eighteen + eleven +
+                        21 - fifteen + 21 - fourteen;
                     if (sum_vertex_D < 52 || 53 < sum_vertex_D) {
                       continue;
                     }
 
 
-                    let sum_vertex_F = seventeen + sixteen + fifteen + 21 - eleven + 21 - twelve;
+                    let sum_vertex_F = seventeen + sixteen + fifteen +
+                        21 - eleven + 21 - twelve;
                     if (sum_vertex_F < 52 || 53 < sum_vertex_F) {
                       continue;
                     }
 
-                    let sum_vertex_G = fifteen + fourteen + 21 - eleven + 21 - nineteen + 21 - eighteen;
+                    let sum_vertex_G = fifteen + fourteen + 21 - eleven +
+                        21 - nineteen + 21 - eighteen;
                     if (sum_vertex_G < 52 || 53 < sum_vertex_G) {
                       continue;
                     }
 
-                    let sum_vertex_I = twelve + eleven + 21 - fifteen + 21 - seventeen + 21 - sixteen;
+                    let sum_vertex_I = twelve + eleven + 21 - fifteen +
+                        21 - seventeen + 21 - sixteen;
                     if (sum_vertex_I < 52 || 53 < sum_vertex_I) {
                       continue;
                     }
 
-                    let sum_vertex_K = 21 - nineteen + 21 - thirteen + 21 - twelve + 21 - eleven + 1;
+                    let sum_vertex_K = 21 - nineteen + 21 - thirteen +
+                        21 - twelve + 21 - eleven + 1;
                     if (sum_vertex_K < 52 || 53 < sum_vertex_K) {
                       continue;
                     }
 
-                    console.log(1, 21 - nineteen, 21 - eighteen, 21 - seventeen, 21 - sixteen, 21 - fifteen, 21 - fourteen, 21 - thirteen, 21 - twelve, 21 - eleven,
-                      eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, 20);
+                    console.log(1, 21 - nineteen, 21 - eighteen, 21 - seventeen,
+                                21 - sixteen, 21 - fifteen, 21 - fourteen,
+                                21 - thirteen, 21 - twelve, 21 - eleven, eleven,
+                                twelve, thirteen, fourteen, fifteen, sixteen,
+                                seventeen, eighteen, nineteen, 20);
                   }
                 }
               }
