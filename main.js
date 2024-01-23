@@ -1,6 +1,6 @@
 /* jslint devel: true */
 
-function printViableArrays() {
+function printViableArrays(checkAdditionalD10Condition) {
   let nineteen;
   for (nineteen = 2; nineteen < 20; nineteen += 1) {
 
@@ -31,7 +31,7 @@ function printViableArrays() {
           }
 
           let sum_vertex_L = 21 - nineteen + 21 - eighteen + 21 - seventeen +
-              21- sixteen + 1;
+            21 - sixteen + 1;
           if (sum_vertex_L < 52 || 53 < sum_vertex_L) {
             continue;
           }
@@ -71,8 +71,8 @@ function printViableArrays() {
                   continue;
                 }
 
-                let sum_vertex_J = 21 - sixteen + 21 - fifteen + 21 - fourteen
-                + 21 - thirteen + 1;
+                let sum_vertex_J = 21 - sixteen + 21 - fifteen + 21 - fourteen +
+                  21 - thirteen + 1;
                 if (sum_vertex_J < 52 || 53 < sum_vertex_J) {
                   continue;
                 }
@@ -90,13 +90,13 @@ function printViableArrays() {
                   }
 
                   let sum_vertex_E = eighteen + seventeen + 21 - fourteen +
-                      21 - thirteen + 21 - twelve;
+                    21 - thirteen + 21 - twelve;
                   if (sum_vertex_E < 52 || 53 < sum_vertex_E) {
                     continue;
                   }
 
                   let sum_vertex_H = fourteen + thirteen + twelve +
-                      21 - seventeen + 21 - eighteen;
+                    21 - seventeen + 21 - eighteen;
                   if (sum_vertex_H < 52 || 53 < sum_vertex_H) {
                     continue;
                   }
@@ -114,48 +114,175 @@ function printViableArrays() {
                       continue;
                     }
 
+                    // These vertices are mirrors of each other:
+                    // AL BJ EH || CK DG FI
+
                     let sum_vertex_C = 20 + thirteen + twelve + eleven +
-                        nineteen;
+                      nineteen;
                     if (sum_vertex_C < 52 || 53 < sum_vertex_C) {
                       continue;
                     }
 
-                    let sum_vertex_D = nineteen + eighteen + eleven +
-                        21 - fifteen + 21 - fourteen;
-                    if (sum_vertex_D < 52 || 53 < sum_vertex_D) {
-                      continue;
-                    }
-
-
-                    let sum_vertex_F = seventeen + sixteen + fifteen +
-                        21 - eleven + 21 - twelve;
-                    if (sum_vertex_F < 52 || 53 < sum_vertex_F) {
-                      continue;
-                    }
-
-                    let sum_vertex_G = fifteen + fourteen + 21 - eleven +
-                        21 - nineteen + 21 - eighteen;
-                    if (sum_vertex_G < 52 || 53 < sum_vertex_G) {
-                      continue;
-                    }
-
-                    let sum_vertex_I = twelve + eleven + 21 - fifteen +
-                        21 - seventeen + 21 - sixteen;
-                    if (sum_vertex_I < 52 || 53 < sum_vertex_I) {
-                      continue;
-                    }
-
                     let sum_vertex_K = 21 - nineteen + 21 - thirteen +
-                        21 - twelve + 21 - eleven + 1;
+                      21 - twelve + 21 - eleven + 1;
                     if (sum_vertex_K < 52 || 53 < sum_vertex_K) {
                       continue;
                     }
 
-                    console.log(1, 21 - nineteen, 21 - eighteen, 21 - seventeen,
-                                21 - sixteen, 21 - fifteen, 21 - fourteen,
-                                21 - thirteen, 21 - twelve, 21 - eleven, eleven,
-                                twelve, thirteen, fourteen, fifteen, sixteen,
-                                seventeen, eighteen, nineteen, 20);
+                    let sum_vertex_D = nineteen + eighteen + eleven +
+                      21 - fifteen + 21 - fourteen;
+                    if (sum_vertex_D < 52 || 53 < sum_vertex_D) {
+                      continue;
+                    }
+
+                    let sum_vertex_G = fifteen + fourteen + 21 - eleven +
+                      21 - nineteen + 21 - eighteen;
+                    if (sum_vertex_G < 52 || 53 < sum_vertex_G) {
+                      continue;
+                    }
+
+                    let sum_vertex_F = seventeen + sixteen + fifteen +
+                      21 - eleven + 21 - twelve;
+                    if (sum_vertex_F < 52 || 53 < sum_vertex_F) {
+                      continue;
+                    }
+
+                    let sum_vertex_I = twelve + eleven + 21 - fifteen +
+                      21 - seventeen + 21 - sixteen;
+                    if (sum_vertex_I < 52 || 53 < sum_vertex_I) {
+                      continue;
+                    }
+
+                    if (checkAdditionalD10Condition) {
+                      let d10_sum_vertex_A = 10 +
+                        (nineteen === 10 ? 10 : nineteen % 10) +
+                        (eighteen === 10 ? 10 : eighteen % 10) +
+                        (seventeen === 10 ? 10 : seventeen % 10) +
+                        (sixteen === 10 ? 10 : sixteen % 10);
+
+                      let d10_sum_vertex_B = 10 +
+                        (sixteen === 10 ? 10 : sixteen % 10) +
+                        (fifteen === 10 ? 10 : fifteen % 10) +
+                        (fourteen === 10 ? 10 : fourteen % 10) +
+                        (thirteen === 10 ? 10 : thirteen % 10);
+
+                      let d10_sum_vertex_C = 10 +
+                        (thirteen === 10 ? 10 : thirteen % 10) +
+                        (twelve === 10 ? 10 : twelve % 10) +
+                        (eleven === 10 ? 10 : eleven % 10) +
+                        (nineteen === 10 ? 10 : nineteen % 10);
+
+                      let d10_sum_vertex_D =
+                        (nineteen === 10 ? 10 : nineteen % 10) +
+                        (eighteen === 10 ? 10 : eighteen % 10) +
+                        (eleven === 10 ? 10 : eleven % 10) +
+                        (21 - fifteen === 10 ? 10 : (21 - fifteen) % 10) +
+                        (21 - fourteen === 10 ? 10 : (21 - fourteen) % 10);
+
+                      let d10_sum_vertex_E =
+                        (eighteen === 10 ? 10 : eighteen % 10) +
+                        (seventeen === 10 ? 10 : seventeen % 10) +
+                        (21 - fourteen === 10 ? 10 : (21 - fourteen) % 10) +
+                        (21 - thirteen === 10 ? 10 : (21 - thirteen) % 10) +
+                        (21 - twelve === 10 ? 10 : (21 - twelve) % 10);
+
+                      let d10_sum_vertex_F =
+                        (seventeen === 10 ? 10 : seventeen % 10) +
+                        (sixteen === 10 ? 10 : sixteen % 10) +
+                        (fifteen === 10 ? 10 : fifteen % 10) +
+                        (eleven === 10 ? 10 : eleven % 10) +
+                        (twelve === 10 ? 10 : twelve % 10);
+
+                      let d10_sum_vertex_G =
+                        (fifteen === 10 ? 10 : fifteen % 10) +
+                        (fourteen === 10 ? 10 : fourteen % 10) +
+                        (21 - eleven === 10 ? 10 : (21 - eleven) % 10) +
+                        (21 - nineteen === 10 ? 10 : (21 - nineteen) % 10) +
+                        (21 - eighteen === 10 ? 10 : (21 - eighteen) % 10);
+
+                      let d10_sum_vertex_H =
+                        (fourteen === 10 ? 10 : fourteen % 10) +
+                        (thirteen === 10 ? 10 : thirteen % 10) +
+                        (twelve === 10 ? 10 : twelve % 10) +
+                        (21 - seventeen === 10 ? 10 : (21 - seventeen) % 10) +
+                        (21 - eighteen === 10 ? 10 : (21 - eighteen) % 10);
+
+                      let d10_sum_vertex_I =
+                        (21 - twelve === 10 ? 10 : (21 - twelve) % 10) +
+                        (21 - eleven === 10 ? 10 : (21 - eleven) % 10) +
+                        (21 - fifteen === 10 ? 10 : (21 - fifteen) % 10) +
+                        (21 - seventeen === 10 ? 10 : (21 - seventeen) % 10) +
+                        (21 - sixteen === 10 ? 10 : (21 - sixteen) % 10);
+
+                      let d10_sum_vertex_J = 1 +
+                        (21 - sixteen === 10 ? 10 : (21 - sixteen) % 10) +
+                        (21 - fifteen === 10 ? 10 : (21 - fifteen) % 10) +
+                        (21 - fourteen === 10 ? 10 : (21 - fourteen) % 10) +
+                        (21 - thirteen === 10 ? 10 : (21 - thirteen) % 10);
+
+                      let d10_sum_vertex_K = 1 +
+                        (21 - nineteen === 10 ? 10 : (21 - nineteen) % 10) +
+                        (21 - thirteen === 10 ? 10 : (21 - thirteen) % 10) +
+                        (21 - twelve === 10 ? 10 : (21 - twelve) % 10) +
+                        (21 - eleven === 10 ? 10 : (21 - eleven) % 10);
+
+                      let d10_sum_vertex_L = 1 +
+                        (21 - nineteen === 10 ? 10 : (21 - nineteen) % 10) +
+                        (21 - eighteen === 10 ? 10 : (21 - eighteen) % 10) +
+                        (21 - seventeen === 10 ? 10 : (21 - seventeen) % 10) +
+                        (21 - sixteen === 10 ? 10 : (21 - sixteen) % 10);
+
+
+                      let permissableD10Sums = [22, 23, 32, 33];
+
+                      if (permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_A) &&
+                        permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_B) &&
+                        permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_C) &&
+                        permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_D) &&
+                        permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_E) &&
+                        permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_F) &&
+                        permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_G) &&
+                        permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_H) &&
+                        permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_I) &&
+                        permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_J) &&
+                        permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_K) &&
+                        permissableD10Sums.find((elem) => elem ===
+                          d10_sum_vertex_L)) {
+
+                        let d10AllSums = [
+                          d10_sum_vertex_A, d10_sum_vertex_B, d10_sum_vertex_C,
+                          d10_sum_vertex_D, d10_sum_vertex_E, d10_sum_vertex_F,
+                          d10_sum_vertex_G, d10_sum_vertex_H, d10_sum_vertex_I,
+                          d10_sum_vertex_J, d10_sum_vertex_K, d10_sum_vertex_L
+                        ];
+
+                        console.log("___", d10AllSums.sort(),
+                          1, 21 - nineteen, 21 - eighteen, 21 - seventeen,
+                          21 - sixteen, 21 - fifteen, 21 - fourteen,
+                          21 - thirteen, 21 - twelve, 21 - eleven, eleven,
+                          twelve, thirteen, fourteen, fifteen, sixteen,
+                          seventeen, eighteen, nineteen, 20
+                        );
+
+                      }
+                    } else {
+                      console.log(1, 21 - nineteen, 21 - eighteen,
+                        21 - seventeen, 21 - sixteen, 21 - fifteen,
+                        21 - fourteen, 21 - thirteen, 21 - twelve,
+                        21 - eleven, eleven, twelve, thirteen, fourteen,
+                        fifteen, sixteen, seventeen, eighteen, nineteen, 20);
+                    }
                   }
                 }
               }
@@ -167,4 +294,4 @@ function printViableArrays() {
   }
 }
 
-printViableArrays();
+printViableArrays(false);
