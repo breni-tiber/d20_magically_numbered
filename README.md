@@ -170,7 +170,7 @@ Here are all 78 configurations satisfying the above conditions:
 
 
 
-Of these 78 configurations four additionally have the property that were you to read their numbers as a d10 (11=>1, 15=>5, 20=> 10) their vertex sums would be [22, 22, 23, 23, 23, 23, 32, 32, 32, 32, 33, 33]:
+Of these 78 configurations four additionally have the property that when you to read their numbers as a d10 (1-10=>1-10, 11-20=>1-10) their vertex sums are be [22, 22, 23, 23, 23, 23, 32, 32, 32, 32, 33, 33]:
 
 1, 17, 16, 12, 7, 18, 19, 8, 11, 15, 6, 10, 13, 2, 3, 14, 9, 5, 4, 20
 
