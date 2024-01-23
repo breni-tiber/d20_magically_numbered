@@ -1,5 +1,5 @@
-If any air is trapped inside a d20 near a vertex numbers surrounding that vertex would be rolled more often. 
-As the average number on a d20 is 10.5, five average numbers would add to 52.5 and any vertex with that vertex sum could be considered "more random".
+If any air is trapped inside a d20 near a vertex, numbers surrounding that vertex will be rolled more often. 
+As the average number on a d20 is 10.5, five average numbers adds to 52.5 and any vertex with that vertex sum could be considered "more random".
 
 The script in this repository finds all configurations such:
 * opposite sides sum to 21 (as is usually done with d20)
@@ -7,10 +7,10 @@ The script in this repository finds all configurations such:
 
 
 Throughout the code as well as in the listings below the fairly common d20 spindown die (20 neighbours 19, 16, and 13) is used as a reference point.
-The first listing for example has to be interpreted such that the faces surrounding 20 on a spindown (19-11) are should be relabeled as _4_, 5, 9, _14_, 3, 2, _13_, 10, 6.
+The first listing for example has to be interpreted such that the faces surrounding 20 on a spindown (19-11) should be relabeled as _4_, 5, 9, _14_, 3, 2, _13_, 10, 6.
 Numbers in italics (4, 14, 13) share an edge with 20 while the others share only a point with 20.
 
-Here are all 78 configurations satisfying the above conditions: 
+Here are all 78 configurations satisfying the above two conditions:
 
 1, 17, 16, 12, 7, 18, 19, 8, 11, 15, 6, 10, 13, 2, 3, 14, 9, 5, 4, 20
 
@@ -170,7 +170,7 @@ Here are all 78 configurations satisfying the above conditions:
 
 
 
-Of these 78 configurations four additionally have the property that when you to read their numbers as a d10 (1-10=>1-10, 11-20=>1-10) their vertex sums are be [22, 22, 23, 23, 23, 23, 32, 32, 32, 32, 33, 33]:
+Of these 78 configurations four additionally have the property that when you to read their numbers as a d10 (1-10=>1-10, 11-20=>1-10) their vertex sums are [22, 22, 23, 23, 23, 23, 32, 32, 32, 32, 33, 33] and are thus close to a hypothetical optimum of 27.5 = 5*5.5:
 
 1, 17, 16, 12, 7, 18, 19, 8, 11, 15, 6, 10, 13, 2, 3, 14, 9, 5, 4, 20
 
