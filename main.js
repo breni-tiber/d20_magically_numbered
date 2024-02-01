@@ -15,7 +15,7 @@ function printViableArrays(checkAdditionalD10Condition) {
     for (
       a[18] = sideMinThreshold; a[18] < sideMaxThreshold; a[18] += 1
     ) {
-      if (a[19] === a[18] || a[5] === a[18]) {
+      if (a[18] === a[19] || a[18] === a[5]) {
         continue;
       }
       a[4] = dieSize + 1 - a[18];
@@ -40,7 +40,8 @@ function printViableArrays(checkAdditionalD10Condition) {
             a[18] === a[16] ||
             a[4] === a[16] ||
             a[17] === a[16] ||
-            a[3] === a[16]
+            a[3] === a[16] ||
+            a[16] >= a[19]
           ) {
             continue;
           }
@@ -106,7 +107,8 @@ function printViableArrays(checkAdditionalD10Condition) {
                   a[15] === a[13] ||
                   a[10] === a[13] ||
                   a[14] === a[13] ||
-                  a[9] === a[13]
+                  a[9] === a[13] ||
+                  a[13] >= a[16]
 
                 ) {
                   continue;
@@ -243,202 +245,24 @@ function printViableArrays(checkAdditionalD10Condition) {
                       continue;
                     }
 
+                    if (
+                      sum_vertex_A === sum_vertex_B && sum_vertex_B === sum_vertex_C ||
+                      sum_vertex_A === sum_vertex_C && sum_vertex_C === sum_vertex_D ||
+                      sum_vertex_A === sum_vertex_D && sum_vertex_D === sum_vertex_E ||
+                      sum_vertex_A === sum_vertex_E && sum_vertex_E === sum_vertex_F ||
+                      sum_vertex_A === sum_vertex_F && sum_vertex_F === sum_vertex_B ||
+
+                      sum_vertex_B === sum_vertex_F && sum_vertex_F === sum_vertex_G ||
+                      sum_vertex_B === sum_vertex_G && sum_vertex_G === sum_vertex_H ||
+                      sum_vertex_B === sum_vertex_C && sum_vertex_C === sum_vertex_H ||
+                      sum_vertex_C === sum_vertex_H && sum_vertex_H === sum_vertex_I ||
+                      sum_vertex_C === sum_vertex_D && sum_vertex_D === sum_vertex_I
+                    ) {
+                      continue;
+                    }
+
                     if (checkAdditionalD10Condition) {
-                      let d10_sum_vertex_A =
-                        10 +
-                        (a[19] === 10 ? 10 : a[19] % 10) +
-                        (a[18] === 10 ? 10 : a[18] % 10) +
-                        (a[17] === 10 ? 10 : a[17] % 10) +
-                        (a[16] === 10 ? 10 : a[16] % 10);
-
-                      let d10_sum_vertex_B =
-                        10 +
-                        (a[16] === 10 ? 10 : a[16] % 10) +
-                        (a[15] === 10 ? 10 : a[15] % 10) +
-                        (a[14] === 10 ? 10 : a[14] % 10) +
-                        (a[13] === 10 ? 10 : a[13] % 10);
-
-                      let d10_sum_vertex_C =
-                        10 +
-                        (a[13] === 10 ? 10 : a[13] % 10) +
-                        (a[12] === 10 ? 10 : a[12] % 10) +
-                        (a[11] === 10 ? 10 : a[11] % 10) +
-                        (a[19] === 10 ? 10 : a[19] % 10);
-
-                      let d10_sum_vertex_D =
-                        (a[19] === 10 ? 10 : a[19] % 10) +
-                        (a[18] === 10 ? 10 : a[18] % 10) +
-                        (a[11] === 10 ? 10 : a[11] % 10) +
-                        (a[10] === 10 ? 10 : a[10] % 10) +
-                        (a[9] === 10 ? 10 : a[9] % 10);
-
-                      let d10_sum_vertex_E =
-                        (a[18] === 10 ? 10 : a[18] % 10) +
-                        (a[17] === 10 ? 10 : a[17] % 10) +
-                        (a[9] === 10 ? 10 : a[9] % 10) +
-                        (a[8] === 10 ? 10 : a[8] % 10) +
-                        (a[7] === 10 ? 10 : a[7] % 10);
-
-                      let d10_sum_vertex_F =
-                        (a[17] === 10 ? 10 : a[17] % 10) +
-                        (a[16] === 10 ? 10 : a[16] % 10) +
-                        (a[15] === 10 ? 10 : a[15] % 10) +
-                        (a[6] === 10 ? 10 : a[6] % 10) +
-                        (a[7] === 10 ? 10 : a[7] % 10);
-                      /*
-                                            let d10_sum_vertex_G =
-                                              (a[15] === 10 ? 10 : a[15] % 10) +
-                                              (a[14] === 10 ? 10 : a[14] % 10) +
-                                              (dieSize + 1 - a[11] === 10 ? 10 : (dieSize + 1 - a[11]) % 10) +
-                                              (dieSize + 1 - a[19] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[19]) % 10) +
-                                              (dieSize + 1 - a[18] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[18]) % 10);
-
-                                            let d10_sum_vertex_H =
-                                              (a[14] === 10 ? 10 : a[14] % 10) +
-                                              (a[13] === 10 ? 10 : a[13] % 10) +
-                                              (a[12] === 10 ? 10 : a[12] % 10) +
-                                              (dieSize + 1 - a[17] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[17]) % 10) +
-                                              (dieSize + 1 - a[18] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[18]) % 10);
-
-                                            let d10_sum_vertex_I =
-                                              (dieSize + 1 - a[12] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[12]) % 10) +
-                                              (dieSize + 1 - a[11] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[11]) % 10) +
-                                              (dieSize + 1 - a[15] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[15]) % 10) +
-                                              (dieSize + 1 - a[17] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[17]) % 10) +
-                                              (dieSize + 1 - a[16] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[16]) % 10);
-
-                                            let d10_sum_vertex_J =
-                                              1 +
-                                              (dieSize + 1 - a[16] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[16]) % 10) +
-                                              (dieSize + 1 - a[15] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[15]) % 10) +
-                                              (dieSize + 1 - a[14] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[14]) % 10) +
-                                              (dieSize + 1 - a[13] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[13]) % 10);
-
-                                            let d10_sum_vertex_K =
-                                              1 +
-                                              (dieSize + 1 - a[19] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[19]) % 10) +
-                                              (dieSize + 1 - a[13] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[13]) % 10) +
-                                              (dieSize + 1 - a[12] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[12]) % 10) +
-                                              (dieSize + 1 - a[11] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[11]) % 10);
-
-                                            let d10_sum_vertex_L =
-                                              1 +
-                                              (dieSize + 1 - a[19] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[19]) % 10) +
-                                              (dieSize + 1 - a[18] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[18]) % 10) +
-                                              (dieSize + 1 - a[17] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[17]) % 10) +
-                                              (dieSize + 1 - a[16] === 10 ?
-                                                10 :
-                                                (dieSize + 1 - a[16]) % 10);
-                                                */
-
-                      let permissableD10Sums = [22, 23, 32, 33];
-
-                      if (
-                        permissableD10Sums.find(
-                          (elem) => elem === d10_sum_vertex_A
-                        ) &&
-                        permissableD10Sums.find(
-                          (elem) => elem === d10_sum_vertex_B
-                        ) &&
-                        permissableD10Sums.find(
-                          (elem) => elem === d10_sum_vertex_C
-                        ) &&
-                        permissableD10Sums.find(
-                          (elem) => elem === d10_sum_vertex_D
-                        ) &&
-                        permissableD10Sums.find(
-                          (elem) => elem === d10_sum_vertex_E
-                        ) &&
-                        permissableD10Sums.find(
-                          (elem) => elem === d10_sum_vertex_F
-                        )
-                        /*
-                                                &&
-                                                permissableD10Sums.find(
-                                                  (elem) => elem === d10_sum_vertex_G
-                                                ) &&
-                                                permissableD10Sums.find(
-                                                  (elem) => elem === d10_sum_vertex_H
-                                                ) &&
-                                                permissableD10Sums.find(
-                                                  (elem) => elem === d10_sum_vertex_I
-                                                ) &&
-                                                permissableD10Sums.find(
-                                                  (elem) => elem === d10_sum_vertex_J
-                                                ) &&
-                                                permissableD10Sums.find(
-                                                  (elem) => elem === d10_sum_vertex_K
-                                                ) &&
-                                                permissableD10Sums.find(
-                                                  (elem) => elem === d10_sum_vertex_L
-                                                )
-                                                */
-                      ) {
-                        let d10AllSums = [
-                          d10_sum_vertex_A,
-                          d10_sum_vertex_B,
-                          d10_sum_vertex_C,
-                          d10_sum_vertex_D,
-                          d10_sum_vertex_E,
-                          d10_sum_vertex_F,
-                          /*d10_sum_vertex_G,
-                          d10_sum_vertex_H,
-                          d10_sum_vertex_I,
-                          d10_sum_vertex_J,
-                          d10_sum_vertex_K,
-                          d10_sum_vertex_L*/
-                        ];
-
-                        console.log(
-                          "___",
-                          d10AllSums.sort(),
-                          a[1], a[2], a[3], a[4], a[5],
-                          a[6], a[7], a[8], a[9], a[10],
-                          a[11], a[12], a[13], a[14], a[15],
-                          a[16], a[17], a[18], a[19], a[0]
-                        );
-                        viableArrays += 1;
-                      }
+                      viableArrays += calculateAdditionalD10Condition(a);
                     } else {
                       console.log(
                         a[1], a[2], a[3], a[4], a[5],
@@ -461,4 +285,133 @@ function printViableArrays(checkAdditionalD10Condition) {
   console.log("Found", viableArrays, "Arrays fulfilling the criteria.");
 }
 
-printViableArrays(true);
+const calculateAdditionalD10Condition = function(a) {
+  let d10_sum_vertex_A =
+    10 +
+    (a[19] === 10 ? 10 : a[19] % 10) +
+    (a[18] === 10 ? 10 : a[18] % 10) +
+    (a[17] === 10 ? 10 : a[17] % 10) +
+    (a[16] === 10 ? 10 : a[16] % 10);
+
+  let d10_sum_vertex_B =
+    10 +
+    (a[16] === 10 ? 10 : a[16] % 10) +
+    (a[15] === 10 ? 10 : a[15] % 10) +
+    (a[14] === 10 ? 10 : a[14] % 10) +
+    (a[13] === 10 ? 10 : a[13] % 10);
+
+  let d10_sum_vertex_C =
+    10 +
+    (a[13] === 10 ? 10 : a[13] % 10) +
+    (a[12] === 10 ? 10 : a[12] % 10) +
+    (a[11] === 10 ? 10 : a[11] % 10) +
+    (a[19] === 10 ? 10 : a[19] % 10);
+
+  let d10_sum_vertex_D =
+    (a[19] === 10 ? 10 : a[19] % 10) +
+    (a[18] === 10 ? 10 : a[18] % 10) +
+    (a[11] === 10 ? 10 : a[11] % 10) +
+    (a[10] === 10 ? 10 : a[10] % 10) +
+    (a[9] === 10 ? 10 : a[9] % 10);
+
+  let d10_sum_vertex_E =
+    (a[18] === 10 ? 10 : a[18] % 10) +
+    (a[17] === 10 ? 10 : a[17] % 10) +
+    (a[9] === 10 ? 10 : a[9] % 10) +
+    (a[8] === 10 ? 10 : a[8] % 10) +
+    (a[7] === 10 ? 10 : a[7] % 10);
+
+  let d10_sum_vertex_F =
+    (a[17] === 10 ? 10 : a[17] % 10) +
+    (a[16] === 10 ? 10 : a[16] % 10) +
+    (a[15] === 10 ? 10 : a[15] % 10) +
+    (a[6] === 10 ? 10 : a[6] % 10) +
+    (a[7] === 10 ? 10 : a[7] % 10);
+
+  let d10_sum_vertex_G =
+    (a[15] === 10 ? 10 : a[15] % 10) +
+    (a[14] === 10 ? 10 : a[14] % 10) +
+    (a[6] === 10 ? 10 : a[6] % 10) +
+    (a[5] === 10 ? 10 : a[5] % 10) +
+    (a[4] === 10 ? 10 : a[4] % 10);
+
+  let d10_sum_vertex_H =
+    (a[14] === 10 ? 10 : a[14] % 10) +
+    (a[13] === 10 ? 10 : a[13] % 10) +
+    (a[12] === 10 ? 10 : a[12] % 10) +
+    (a[3] === 10 ? 10 : a[3] % 10) +
+    (a[4] === 10 ? 10 : a[4] % 10);
+
+  let d10_sum_vertex_I =
+    (a[12] === 10 ? 10 : a[12] % 10) +
+    (a[11] === 10 ? 10 : a[11] % 10) +
+    (a[10] === 10 ? 10 : a[10] % 10) +
+    (a[2] === 10 ? 10 : a[2] % 10) +
+    (a[3] === 10 ? 10 : a[3] % 10);
+
+  let d10_sum_vertex_J =
+    1 +
+    (a[2] === 10 ? 10 : a[2] % 10) +
+    (a[10] === 10 ? 10 : a[10] % 10) +
+    (a[9] === 10 ? 10 : a[9] % 10) +
+    (a[8] === 10 ? 10 : a[8] % 10);
+
+  let d10_sum_vertex_K =
+    1 +
+    (a[5] === 10 ? 10 : a[5] % 10) +
+    (a[6] === 10 ? 10 : a[6] % 10) +
+    (a[7] === 10 ? 10 : a[7] % 10) +
+    (a[8] === 10 ? 10 : a[8] % 10);
+
+  let d10_sum_vertex_L =
+    1 +
+    (a[5] === 10 ? 10 : a[5] % 10) +
+    (a[4] === 10 ? 10 : a[4] % 10) +
+    (a[3] === 10 ? 10 : a[3] % 10) +
+    (a[2] === 10 ? 10 : a[2] % 10);
+
+  let permissableD10Sums = [22, 23, 32, 33];
+
+  if (
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_A) &&
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_B) &&
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_C) &&
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_D) &&
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_E) &&
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_F) &&
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_G) &&
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_H) &&
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_I) &&
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_J) &&
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_K) &&
+    permissableD10Sums.find((elem) => elem === d10_sum_vertex_L)
+  ) {
+    let d10AllSums = [
+      d10_sum_vertex_A,
+      d10_sum_vertex_B,
+      d10_sum_vertex_C,
+      d10_sum_vertex_D,
+      d10_sum_vertex_E,
+      d10_sum_vertex_F,
+      d10_sum_vertex_G,
+      d10_sum_vertex_H,
+      d10_sum_vertex_I,
+      d10_sum_vertex_J,
+      d10_sum_vertex_K,
+      d10_sum_vertex_L
+    ];
+
+    console.log(
+      d10AllSums.sort(),
+      a[1], a[2], a[3], a[4], a[5],
+      a[6], a[7], a[8], a[9], a[10],
+      a[11], a[12], a[13], a[14], a[15],
+      a[16], a[17], a[18], a[19], a[0]
+    );
+    return 1;
+  }
+
+  return 0;
+};
+
+printViableArrays(false);
