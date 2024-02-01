@@ -2,9 +2,10 @@
 
 function printViableArrays(checkAdditionalD10Condition) {
   const dieSize = 20; // should be in [2, 4, 5, 10, 20]
-  const fiveAverages = Math.round(((dieSize + 1) * 5) / 2) - 1;
+  const fiveAverages = (dieSize + 1) * 2.5; // [7.5, 12.5, 15, 27.5, 53.5]
+  const precision = 1;
   const sideMaxThreshold = Math.min(dieSize + 1, 20);
-  const sideMinThreshold = 1 + Math.floor(20 / dieSize);
+  const sideMinThreshold = 1 + Math.floor(dieSize / 20);
   let viableArrays = 0;
   let a = [dieSize, 1];
 
@@ -49,12 +50,12 @@ function printViableArrays(checkAdditionalD10Condition) {
           a[2] = dieSize + 1 - a[16];
 
           let sum_vertex_A = a[0] + a[19] + a[18] + a[17] + a[16];
-          if (sum_vertex_A < fiveAverages || fiveAverages + 1 < sum_vertex_A) {
+          if (Math.abs(sum_vertex_A - fiveAverages) > precision) {
             continue;
           }
 
           let sum_vertex_L = a[5] + a[4] + a[3] + a[2] + a[1];
-          if (sum_vertex_L < fiveAverages || fiveAverages + 1 < sum_vertex_L) {
+          if (Math.abs(sum_vertex_L - fiveAverages) > precision) {
             continue;
           }
 
@@ -115,18 +116,12 @@ function printViableArrays(checkAdditionalD10Condition) {
                 }
                 a[8] = dieSize + 1 - a[13];
                 let sum_vertex_B = a[0] + a[16] + a[15] + a[14] + a[13];
-                if (
-                  sum_vertex_B < fiveAverages ||
-                  fiveAverages + 1 < sum_vertex_B
-                ) {
+                if (Math.abs(sum_vertex_B - fiveAverages) > precision) {
                   continue;
                 }
 
                 let sum_vertex_J = a[2] + a[10] + a[9] + a[8] + a[1];
-                if (
-                  sum_vertex_J < fiveAverages ||
-                  fiveAverages + 1 < sum_vertex_J
-                ) {
+                if (Math.abs(sum_vertex_J - fiveAverages) > precision) {
                   continue;
                 }
 
@@ -154,18 +149,12 @@ function printViableArrays(checkAdditionalD10Condition) {
                   a[7] = dieSize + 1 - a[12];
 
                   let sum_vertex_E = a[18] + a[17] + a[9] + a[8] + a[7];
-                  if (
-                    sum_vertex_E < fiveAverages ||
-                    fiveAverages + 1 < sum_vertex_E
-                  ) {
+                  if (Math.abs(sum_vertex_E - fiveAverages) > precision) {
                     continue;
                   }
 
                   let sum_vertex_H = a[14] + a[13] + a[12] + a[3] + a[4];
-                  if (
-                    sum_vertex_H < fiveAverages ||
-                    fiveAverages + 1 < sum_vertex_H
-                  ) {
+                  if (Math.abs(sum_vertex_H - fiveAverages) > precision) {
                     continue;
                   }
 
@@ -198,50 +187,32 @@ function printViableArrays(checkAdditionalD10Condition) {
                     // AL BJ EH || CK DG FI
 
                     let sum_vertex_C = a[0] + a[13] + a[12] + a[11] + a[19];
-                    if (
-                      sum_vertex_C < fiveAverages ||
-                      fiveAverages + 1 < sum_vertex_C
-                    ) {
+                    if (Math.abs(sum_vertex_C - fiveAverages) > precision) {
                       continue;
                     }
 
                     let sum_vertex_K = a[5] + a[8] + a[7] + a[6] + a[1];
-                    if (
-                      sum_vertex_K < fiveAverages ||
-                      fiveAverages + 1 < sum_vertex_K
-                    ) {
+                    if (Math.abs(sum_vertex_K - fiveAverages) > precision) {
                       continue;
                     }
 
                     let sum_vertex_D = a[19] + a[18] + a[11] + a[10] + a[9];
-                    if (
-                      sum_vertex_D < fiveAverages ||
-                      fiveAverages + 1 < sum_vertex_D
-                    ) {
+                    if (Math.abs(sum_vertex_D - fiveAverages) > precision) {
                       continue;
                     }
 
                     let sum_vertex_G = a[15] + a[14] + a[6] + a[5] + a[4];
-                    if (
-                      sum_vertex_G < fiveAverages ||
-                      fiveAverages + 1 < sum_vertex_G
-                    ) {
+                    if (Math.abs(sum_vertex_G - fiveAverages) > precision) {
                       continue;
                     }
 
                     let sum_vertex_F = a[17] + a[16] + a[15] + a[6] + a[7];
-                    if (
-                      sum_vertex_F < fiveAverages ||
-                      fiveAverages + 1 < sum_vertex_F
-                    ) {
+                    if (Math.abs(sum_vertex_F - fiveAverages) > precision) {
                       continue;
                     }
 
                     let sum_vertex_I = a[12] + a[11] + a[10] + a[3] + a[2];
-                    if (
-                      sum_vertex_I < fiveAverages ||
-                      fiveAverages + 1 < sum_vertex_I
-                    ) {
+                    if (Math.abs(sum_vertex_I - fiveAverages) > precision) {
                       continue;
                     }
 
