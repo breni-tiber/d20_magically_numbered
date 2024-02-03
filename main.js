@@ -257,89 +257,20 @@ function printViableArrays(checkAdditionalD10Condition) {
 }
 
 const calculateAdditionalD10Condition = function(a) {
-  let d10_sum_vertex_A =
-    10 +
-    (a[19] === 10 ? 10 : a[19] % 10) +
-    (a[18] === 10 ? 10 : a[18] % 10) +
-    (a[17] === 10 ? 10 : a[17] % 10) +
-    (a[16] === 10 ? 10 : a[16] % 10);
 
-  let d10_sum_vertex_B =
-    10 +
-    (a[16] === 10 ? 10 : a[16] % 10) +
-    (a[15] === 10 ? 10 : a[15] % 10) +
-    (a[14] === 10 ? 10 : a[14] % 10) +
-    (a[13] === 10 ? 10 : a[13] % 10);
+  let d10_sum_vertex_A = 10 + d10Value(a[19]) + d10Value(a[18]) + d10Value(a[17]) + d10Value(a[16]);
+  let d10_sum_vertex_B = 10 + d10Value(a[16]) + d10Value(a[15]) + d10Value(a[14]) + d10Value(a[13]);
+  let d10_sum_vertex_C = 10 + d10Value(a[13]) + d10Value(a[12]) + d10Value(a[11]) + d10Value(a[19]);
+  let d10_sum_vertex_D = d10Value(a[19]) + d10Value(a[18]) + d10Value(a[11]) + d10Value(a[10]) + d10Value(a[9]);
+  let d10_sum_vertex_E = d10Value(a[18]) + d10Value(a[17]) + d10Value(a[9]) + d10Value(a[8]) + d10Value(a[7]);
+  let d10_sum_vertex_F = d10Value(a[17]) + d10Value(a[16]) + d10Value(a[15]) + d10Value(a[6]) + d10Value(a[7]);
 
-  let d10_sum_vertex_C =
-    10 +
-    (a[13] === 10 ? 10 : a[13] % 10) +
-    (a[12] === 10 ? 10 : a[12] % 10) +
-    (a[11] === 10 ? 10 : a[11] % 10) +
-    (a[19] === 10 ? 10 : a[19] % 10);
-
-  let d10_sum_vertex_D =
-    (a[19] === 10 ? 10 : a[19] % 10) +
-    (a[18] === 10 ? 10 : a[18] % 10) +
-    (a[11] === 10 ? 10 : a[11] % 10) +
-    (a[10] === 10 ? 10 : a[10] % 10) +
-    (a[9] === 10 ? 10 : a[9] % 10);
-
-  let d10_sum_vertex_E =
-    (a[18] === 10 ? 10 : a[18] % 10) +
-    (a[17] === 10 ? 10 : a[17] % 10) +
-    (a[9] === 10 ? 10 : a[9] % 10) +
-    (a[8] === 10 ? 10 : a[8] % 10) +
-    (a[7] === 10 ? 10 : a[7] % 10);
-
-  let d10_sum_vertex_F =
-    (a[17] === 10 ? 10 : a[17] % 10) +
-    (a[16] === 10 ? 10 : a[16] % 10) +
-    (a[15] === 10 ? 10 : a[15] % 10) +
-    (a[6] === 10 ? 10 : a[6] % 10) +
-    (a[7] === 10 ? 10 : a[7] % 10);
-
-  let d10_sum_vertex_G =
-    (a[15] === 10 ? 10 : a[15] % 10) +
-    (a[14] === 10 ? 10 : a[14] % 10) +
-    (a[6] === 10 ? 10 : a[6] % 10) +
-    (a[5] === 10 ? 10 : a[5] % 10) +
-    (a[4] === 10 ? 10 : a[4] % 10);
-
-  let d10_sum_vertex_H =
-    (a[14] === 10 ? 10 : a[14] % 10) +
-    (a[13] === 10 ? 10 : a[13] % 10) +
-    (a[12] === 10 ? 10 : a[12] % 10) +
-    (a[3] === 10 ? 10 : a[3] % 10) +
-    (a[4] === 10 ? 10 : a[4] % 10);
-
-  let d10_sum_vertex_I =
-    (a[12] === 10 ? 10 : a[12] % 10) +
-    (a[11] === 10 ? 10 : a[11] % 10) +
-    (a[10] === 10 ? 10 : a[10] % 10) +
-    (a[2] === 10 ? 10 : a[2] % 10) +
-    (a[3] === 10 ? 10 : a[3] % 10);
-
-  let d10_sum_vertex_J =
-    1 +
-    (a[2] === 10 ? 10 : a[2] % 10) +
-    (a[10] === 10 ? 10 : a[10] % 10) +
-    (a[9] === 10 ? 10 : a[9] % 10) +
-    (a[8] === 10 ? 10 : a[8] % 10);
-
-  let d10_sum_vertex_K =
-    1 +
-    (a[5] === 10 ? 10 : a[5] % 10) +
-    (a[6] === 10 ? 10 : a[6] % 10) +
-    (a[7] === 10 ? 10 : a[7] % 10) +
-    (a[8] === 10 ? 10 : a[8] % 10);
-
-  let d10_sum_vertex_L =
-    1 +
-    (a[5] === 10 ? 10 : a[5] % 10) +
-    (a[4] === 10 ? 10 : a[4] % 10) +
-    (a[3] === 10 ? 10 : a[3] % 10) +
-    (a[2] === 10 ? 10 : a[2] % 10);
+  let d10_sum_vertex_G = d10Value(a[15]) + d10Value(a[14]) + d10Value(a[6]) + d10Value(a[5]) + d10Value(a[4]);
+  let d10_sum_vertex_H = d10Value(a[14]) + d10Value(a[13]) + d10Value(a[12]) + d10Value(a[3]) + d10Value(a[4]);
+  let d10_sum_vertex_I = d10Value(a[12]) + d10Value(a[11]) + d10Value(a[10]) + d10Value(a[2]) + d10Value(a[3]);
+  let d10_sum_vertex_J = 1 + d10Value(a[2]) + d10Value(a[10]) + d10Value(a[9]) + d10Value(a[8]);
+  let d10_sum_vertex_K = 1 + d10Value(a[5]) + d10Value(a[6]) + d10Value(a[7]) + d10Value(a[8]);
+  let d10_sum_vertex_L = 1 + d10Value(a[5]) + d10Value(a[4]) + d10Value(a[3]) + d10Value(a[2]);
 
   let permissableD10Sums = [22, 23, 32, 33];
 
@@ -384,5 +315,9 @@ const calculateAdditionalD10Condition = function(a) {
 
   return 0;
 };
+
+const d10Value = function(i) {
+	return i > 10 ? i - 10 : i;
+}
 
 printViableArrays(false);
