@@ -36,7 +36,6 @@ function printViableArrays(checkAdditionalD10Condition) {
           a[16] = sideMinThreshold; a[16] < sideMaxThreshold; a[16] += 1
         ) {
           if (
-			  //a.contains?
             a[19] === a[16] ||
             a[5] === a[16] ||
             a[18] === a[16] ||
