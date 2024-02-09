@@ -241,6 +241,7 @@ function printViableArrays(checkAdditionalD10Condition) {
                         a[11], a[12], a[13], a[14], a[15],
                         a[16], a[17], a[18], a[19], a[0]
                       );
+                      printd20big(a);
                       viableArrays += 1;
                     }
                   }
@@ -310,14 +311,104 @@ const calculateAdditionalD10Condition = function(a) {
       a[11], a[12], a[13], a[14], a[15],
       a[16], a[17], a[18], a[19], a[0]
     );
+    printd20big(a);
     return 1;
   }
 
   return 0;
 };
 
-const d10Value = function(i) {
-	return i > 10 ? i - 10 : i;
+function d10Value(i) {
+  return i > 10 ? i - 10 : i;
 }
+
+/**        /\    /\    /\    /\    /\
+ *        /20\  /19\  /18\  /17\  /16\
+ *       /____\/____\/____\/____\/____\
+ *      /\ 13 /\ 11 /\  9 /\  7 /\ 15 /
+ *     /14\  /12\  /10\  / 8\  / 6\  /
+ *    /____\/____\/____\/____\/____\/
+ *    \  4 /\  3 /\  2 /\  1 /\  5 /
+ *     \  /  \  /  \  /  \  /  \  /
+ *      \/    \/    \/    \/    \/
+ */
+function printd20flat(a) {
+  console.log("\n   " + "    /\\".repeat(5));
+  console.log("      /" + [0,19,18,17,16].map((i)=>a[i]).map((i)=>(i<10? " "+i : ""+i)).join("\\  /") + "\\");
+  console.log("     " + "/____\\".repeat(5));
+
+  console.log("    /\\ " + [13,11,9,7,15].map((i)=>a[i]).map((i)=>(i<10? " "+i : ""+i)).join(" /\\ ") + " /");
+  console.log("   /" + [14,12,10,8,6].map((i)=>a[i]).map((i)=>(i<10? " "+i : ""+i)).join("\\  /") + "\\  /");
+  console.log("  " + "/____\\".repeat(5) + "/");
+
+  console.log("  \\ " + [4,3,2,1,5].map((i)=>a[i]).map((i)=>(i<10? " "+i : ""+i)).join(" /\\ ") + " /");
+  console.log(" " + "  \\  /".repeat(5));
+  console.log("" + "    \\/".repeat(5));
+}
+
+/**              _
+ *            __/ \__                    __/|\__
+ *         __/ _/ \_ \__              __/   |   \__
+ *      __/20_/ 19  \_18\__        __/  17  |  16  \__
+ *     /____/_________\____\      /_________|_________\
+ *    |    /\         /\    |    |\        / \        /|
+ *    |13 /  \  11   /  \ 9 |    | \  7   /   \  15  / |
+ *    |  /    \     /    \  |    |  \    /     \    /  |
+ *    | /  12  \   /  10  \ |    | 8 \  /   6   \  / 14|
+ *    |/________\ /________\|    |____\/_________\/____|
+ *     \__       |       __/      \__  \_       _/  __/
+ *        \__ 3  |  2 __/            \_1 \_ 5 _/ 4_/
+ *           \__ | __/                  \__\ /__/
+ *              \|/                        \_/
+ */
+function printd20big(a) {
+  const p = 4;
+  const m = p+23;
+  let s = p+11;
+
+  let nums = [0,19,18,17,16].map((i)=>a[i].toString()).map((x,ind)=>(ind===2||ind===4? x.padEnd(2," ") : x.padStart(2," ")))
+  console.log("\n" + " ".repeat(s) + "_");
+  s -= 3;
+  console.log( (" ".repeat(s) + "__/ \\__").padEnd(m+s," ") +
+	  "__/|\\__");
+  s -= 3;
+  console.log( (" ".repeat(s) + "__/ _/ \\_ \\__").padEnd(m+s," ") +
+	  "__/   |   \\__");
+  s -= 3;
+  console.log( (" ".repeat(s) + `__/${nums[0]}_/ ${nums[1]}  \\_${nums[2]}\\__`).padEnd(m+s," ") +
+      `__/  ${nums[3]}  |  ${nums[4]}  \\__`);
+  s -= 1;
+  console.log( (" ".repeat(s) + "/____/_________\\____\\").padEnd(m+s," ") +
+      "/_________|_________\\");
+
+  s = p;
+  nums = [13,11,9,7,15].map((i)=>a[i].toString()).map((x,ind)=>(ind===2||ind===3? x.padEnd(2," ") : x.padStart(2," ")))
+  console.log( (" ".repeat(s) + "|    /\\         /\\    |").padEnd(m+s," ") +
+      "|\\        / \\        /|");
+  console.log( (" ".repeat(s) + `|${nums[0]} /  \\  ${nums[1]}   /  \\ ${nums[2]}|`).padEnd(m+s," ") +
+      `| \\  ${nums[3]}  /   \\  ${nums[4]}  / |`);
+  console.log( (" ".repeat(s) + "|  /    \\     /    \\  |").padEnd(m+s," ") +
+      "|  \\    /     \\    /  |");
+  nums = [12,10,8,6,14].map((i)=>a[i].toString()).map((x,ind)=>(ind===0||ind===4? x.padEnd(2," ") : x.padStart(2," ")))
+  console.log( (" ".repeat(s) + `| /  ${nums[0]}  \\   /  ${nums[1]}  \\ |`).padEnd(m+s," ") +
+      `|${nums[2]} \\  /  ${nums[3]}   \\  / ${nums[4]}|`);
+  console.log( (" ".repeat(s) + "|/________\\ /________\\|").padEnd(m+s," ") +
+      "|____\\/_________\\/____|");
+
+  s += 1;
+  nums = [3,2,1,5,4].map((i)=>a[i].toString()).map((x,ind)=>(ind===1||ind===2? x.padEnd(2," ") : x.padStart(2," ")))
+  console.log( (" ".repeat(s) + "\\__       |       __/").padEnd(m+s," ") +
+      "\\__  \\_       _/  __/");
+  s += 3;
+  console.log( (" ".repeat(s) + `\\__${nums[0]}  |  ${nums[1]}__/`).padEnd(m+s," ") +
+      `\\_${nums[2]}\\_${nums[3]} _/${nums[4]}_/`);
+  s += 3;
+  console.log( (" ".repeat(s) + "\\__ | __/").padEnd(m+s," ") +
+      "\\__\\ /__/");
+  s += 3;
+  console.log( (" ".repeat(s) + "\\|/").padEnd(m+s," ") +
+      "\\_/");
+}
+
 
 printViableArrays(false);
