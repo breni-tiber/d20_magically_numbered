@@ -1,6 +1,6 @@
 /* jslint devel: true */
 
-function printViableArrays(checkAdditionalD10Condition) {
+function printViableArrays(checkVertexSum=true, checkFaceSum=false, checkAdditionalNotEqualVertexSum=true, checkAdditionalD10Condition=false) {
   const dieSize = 20; // should be in [2, 4, 5, 10, 20]
   const fiveAverages = (dieSize + 1) * 2.5; // [7.5, 12.5, 15, 27.5, 53.5]
   const precision = 1;
@@ -50,12 +50,12 @@ function printViableArrays(checkAdditionalD10Condition) {
           a[2] = dieSize + 1 - a[16];
 
           let sum_vertex_A = a[0] + a[19] + a[18] + a[17] + a[16];
-          if (Math.abs(sum_vertex_A - fiveAverages) > precision) {
+          if (checkVertexSum && Math.abs(sum_vertex_A - fiveAverages) > precision) {
             continue;
           }
 
           let sum_vertex_L = a[5] + a[4] + a[3] + a[2] + a[1];
-          if (Math.abs(sum_vertex_L - fiveAverages) > precision) {
+          if (checkVertexSum && Math.abs(sum_vertex_L - fiveAverages) > precision) {
             continue;
           }
 
@@ -116,12 +116,12 @@ function printViableArrays(checkAdditionalD10Condition) {
                 }
                 a[8] = dieSize + 1 - a[13];
                 let sum_vertex_B = a[0] + a[16] + a[15] + a[14] + a[13];
-                if (Math.abs(sum_vertex_B - fiveAverages) > precision) {
+                if (checkVertexSum && Math.abs(sum_vertex_B - fiveAverages) > precision) {
                   continue;
                 }
 
                 let sum_vertex_J = a[2] + a[10] + a[9] + a[8] + a[1];
-                if (Math.abs(sum_vertex_J - fiveAverages) > precision) {
+                if (checkVertexSum && Math.abs(sum_vertex_J - fiveAverages) > precision) {
                   continue;
                 }
 
@@ -149,12 +149,12 @@ function printViableArrays(checkAdditionalD10Condition) {
                   a[7] = dieSize + 1 - a[12];
 
                   let sum_vertex_E = a[18] + a[17] + a[9] + a[8] + a[7];
-                  if (Math.abs(sum_vertex_E - fiveAverages) > precision) {
+                  if (checkVertexSum && Math.abs(sum_vertex_E - fiveAverages) > precision) {
                     continue;
                   }
 
                   let sum_vertex_H = a[14] + a[13] + a[12] + a[3] + a[4];
-                  if (Math.abs(sum_vertex_H - fiveAverages) > precision) {
+                  if (checkVertexSum && Math.abs(sum_vertex_H - fiveAverages) > precision) {
                     continue;
                   }
 
@@ -187,36 +187,37 @@ function printViableArrays(checkAdditionalD10Condition) {
                     // AL BJ EH || CK DG FI
 
                     let sum_vertex_C = a[0] + a[13] + a[12] + a[11] + a[19];
-                    if (Math.abs(sum_vertex_C - fiveAverages) > precision) {
+                    if (checkVertexSum && Math.abs(sum_vertex_C - fiveAverages) > precision) {
                       continue;
                     }
 
                     let sum_vertex_K = a[5] + a[8] + a[7] + a[6] + a[1];
-                    if (Math.abs(sum_vertex_K - fiveAverages) > precision) {
+                    if (checkVertexSum && Math.abs(sum_vertex_K - fiveAverages) > precision) {
                       continue;
                     }
 
                     let sum_vertex_D = a[19] + a[18] + a[11] + a[10] + a[9];
-                    if (Math.abs(sum_vertex_D - fiveAverages) > precision) {
+                    if (checkVertexSum && Math.abs(sum_vertex_D - fiveAverages) > precision) {
                       continue;
                     }
 
                     let sum_vertex_G = a[15] + a[14] + a[6] + a[5] + a[4];
-                    if (Math.abs(sum_vertex_G - fiveAverages) > precision) {
+                    if (checkVertexSum && Math.abs(sum_vertex_G - fiveAverages) > precision) {
                       continue;
                     }
 
                     let sum_vertex_F = a[17] + a[16] + a[15] + a[6] + a[7];
-                    if (Math.abs(sum_vertex_F - fiveAverages) > precision) {
+                    if (checkVertexSum && Math.abs(sum_vertex_F - fiveAverages) > precision) {
                       continue;
                     }
 
                     let sum_vertex_I = a[12] + a[11] + a[10] + a[3] + a[2];
-                    if (Math.abs(sum_vertex_I - fiveAverages) > precision) {
+                    if (checkVertexSum && Math.abs(sum_vertex_I - fiveAverages) > precision) {
                       continue;
                     }
 
                     if (
+                      checkAdditionalNotEqualVertexSum && (
                       sum_vertex_A === sum_vertex_B && sum_vertex_B === sum_vertex_C ||
                       sum_vertex_A === sum_vertex_C && sum_vertex_C === sum_vertex_D ||
                       sum_vertex_A === sum_vertex_D && sum_vertex_D === sum_vertex_E ||
@@ -227,7 +228,7 @@ function printViableArrays(checkAdditionalD10Condition) {
                       sum_vertex_B === sum_vertex_G && sum_vertex_G === sum_vertex_H ||
                       sum_vertex_B === sum_vertex_C && sum_vertex_C === sum_vertex_H ||
                       sum_vertex_C === sum_vertex_H && sum_vertex_H === sum_vertex_I ||
-                      sum_vertex_C === sum_vertex_D && sum_vertex_D === sum_vertex_I
+                      sum_vertex_C === sum_vertex_D && sum_vertex_D === sum_vertex_I )
                     ) {
                       continue;
                     }
@@ -411,4 +412,5 @@ function printd20big(a) {
 }
 
 
-printViableArrays(false);
+printViableArrays();
+
