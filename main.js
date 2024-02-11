@@ -371,10 +371,10 @@ function printd20big(a) {
   console.log("\n" + " ".repeat(s) + "_");
   s -= 3;
   console.log( (" ".repeat(s) + "__/ \\__").padEnd(m+s," ") +
-	  "__/|\\__");
+      "__/|\\__");
   s -= 3;
   console.log( (" ".repeat(s) + "__/ _/ \\_ \\__").padEnd(m+s," ") +
-	  "__/   |   \\__");
+      "__/   |   \\__");
   s -= 3;
   console.log( (" ".repeat(s) + `__/${nums[0]}_/ ${nums[1]}  \\_${nums[2]}\\__`).padEnd(m+s," ") +
       `__/  ${nums[3]}  |  ${nums[4]}  \\__`);
