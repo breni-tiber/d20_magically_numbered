@@ -6,6 +6,8 @@ function printViableArrays(checkVertexSum=true, checkFaceSum=false, checkAdditio
   const precision = 1;
   const sideMaxThreshold = Math.min(dieSize + 1, 20);
   const sideMinThreshold = 1 + Math.floor(dieSize / 20);
+  const fourAverages = (dieSize + 1) * 2;
+  const faceSumPrecision = 7;
   let viableArrays = 0;
   let a = [dieSize, 1];
 
@@ -75,6 +77,14 @@ function printViableArrays(checkVertexSum=true, checkFaceSum=false, checkAdditio
               continue;
             }
             a[10] = dieSize + 1 - a[15];
+
+            if (checkFaceSum && (
+              Math.abs(a[16] + a[17] + a[0] + a[15] - fourAverages) > faceSumPrecision ||
+              Math.abs(a[2] + a[3] + a[1] + a[10] - fourAverages) > faceSumPrecision )
+            ) {
+              continue;
+            }
+
             for (
               a[14] = sideMinThreshold; a[14] < sideMaxThreshold; a[14] += 1
             ) {
@@ -93,6 +103,12 @@ function printViableArrays(checkVertexSum=true, checkFaceSum=false, checkAdditio
                 continue;
               }
               a[9] = dieSize + 1 - a[14];
+              if (checkFaceSum && (
+                Math.abs(a[18] + a[19] + a[17] + a[9] - fourAverages) > faceSumPrecision ||
+                Math.abs(a[4] + a[5] + a[3] + a[14] - fourAverages) > faceSumPrecision )
+              ) {
+                continue;
+              }
               for (
                 a[13] = sideMinThreshold; a[13] < sideMaxThreshold; a[13] += 1
               ) {
@@ -122,6 +138,15 @@ function printViableArrays(checkVertexSum=true, checkFaceSum=false, checkAdditio
 
                 let sum_vertex_J = a[2] + a[10] + a[9] + a[8] + a[1];
                 if (checkVertexSum && Math.abs(sum_vertex_J - fiveAverages) > precision) {
+                  continue;
+                }
+
+                if (checkFaceSum && (
+                  Math.abs(a[0] + a[16] + a[19] + a[13] - fourAverages) > faceSumPrecision ||
+                  Math.abs(a[1] + a[2] + a[5] + a[8] - fourAverages) > faceSumPrecision ||
+                  Math.abs(a[14] + a[15] + a[13] + a[4] - fourAverages) > faceSumPrecision ||
+                  Math.abs(a[9] + a[10] + a[8] + a[18] - fourAverages) > faceSumPrecision )
+                ) {
                   continue;
                 }
 
@@ -158,6 +183,15 @@ function printViableArrays(checkVertexSum=true, checkFaceSum=false, checkAdditio
                     continue;
                   }
 
+                  if (checkFaceSum && (
+                    Math.abs(a[17] + a[18] + a[16] + a[7] - fourAverages) > faceSumPrecision ||
+                    Math.abs(a[3] + a[4] + a[2] + a[12] - fourAverages) > faceSumPrecision ||
+                    Math.abs(a[13] + a[14] + a[12] + a[0] - fourAverages) > faceSumPrecision ||
+                    Math.abs(a[8] + a[9] + a[7] + a[1] - fourAverages) > faceSumPrecision )
+                  ) {
+                    continue;
+                  }
+
                   for (
                     a[11] = sideMinThreshold; a[11] < sideMaxThreshold; a[11] += 1
                   ) {
@@ -182,6 +216,19 @@ function printViableArrays(checkVertexSum=true, checkFaceSum=false, checkAdditio
                       continue;
                     }
                     a[6] = dieSize + 1 - a[11];
+
+                    if (checkFaceSum && (
+                      Math.abs(a[19] + a[0] + a[18] + a[11] - fourAverages) > faceSumPrecision ||
+                      Math.abs(a[5] + a[1] + a[4] + a[6] - fourAverages) > faceSumPrecision ||
+                      Math.abs(a[15] + a[6] + a[14] + a[16] - fourAverages) > faceSumPrecision ||
+                      Math.abs(a[10] + a[11] + a[9] + a[2] - fourAverages) > faceSumPrecision ||
+                      Math.abs(a[12] + a[13] + a[11] + a[3] - fourAverages) > faceSumPrecision ||
+                      Math.abs(a[7] + a[8] + a[6] + a[17] - fourAverages) > faceSumPrecision ||
+                      Math.abs(a[11] + a[12] + a[10] + a[19] - fourAverages) > faceSumPrecision ||
+                      Math.abs(a[6] + a[7] + a[15] + a[5] - fourAverages) > faceSumPrecision )
+                    ) {
+                      continue;
+                    }
 
                     // These vertices are mirrors of each other:
                     // AL BJ EH || CK DG FI
